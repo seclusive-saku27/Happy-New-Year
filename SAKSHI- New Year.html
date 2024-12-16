@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Countdown</title>
+    
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        * {
+            color: aliceblue;
+        }
+        
+        body {
+            background-image: url(./christmas.jpg);
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; 
+            margin: 0;  
+        }
+        
+        .container {
+            text-align: center;
+            width: 520px;
+            border: 10px solid rgb(260, 260, 260);
+            background-color: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+            padding-bottom: 50px;
+        }
+        
+        h1 {
+            font-weight: bold;
+            font-size: 50px;
+            margin: 0; 
+        }
+        
+        .countdown-timer {
+            display: flex;
+        }
+        
+        .timer {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        
+        .timer p {
+            height: 10px;
+            text-align: center;
+            font-size: 80px;
+            font-weight: bold;
+        }
+        
+        .timer span {
+            font-size: 30px;
+        }
+        
+    </style>
+</head> 
+<body>
+
+    <div class="container">
+
+        <h1>SAKSHI- New Year Countdown for 2025!</h1>
+
+        <!-- Countdown Timer -->
+        <div class="countdown-timer">
+            <div class="timer countdown-days">
+                <p id="days">0</p>
+                <span>Days</span>
+            </div>
+            <div class="timer countdown-hours">
+                <p id="hours">0</p>
+                <span>Hours</span>
+            </div>
+            <div class="timer countdown-minutes">
+                <p id="minutes">0</p>
+                <span>Minutes</span>
+            </div>
+            <div class="timer countdown-seconds">
+                <p id="seconds">0</p>
+                <span>Seconds</span>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>const newYear = "1 Jan 2025"
+        const timerDays = document.querySelector("#days");
+        const timerHours = document.querySelector("#hours");
+        const timerMinutes = document.querySelector("#minutes");
+        const timerSeconds = document.querySelector("#seconds");
+        
+        function christmasCountdown() { 
+            const newYearDate = new Date(newYear);
+            const nowDate = new Date();
+            const countdown = (newYearDate - nowDate);
+        
+            // Values of timer
+            const seconds = Math.floor((countdown / 1000) % 60);
+            const minutes = Math.floor((countdown / 1000 / 60) % 60);
+            const hours = Math.floor((countdown / 1000 / 60 / 60) % 24);
+            const days = Math.floor(countdown / 1000 / 60 / 60 / 24);
+        
+            // Function to add leading zero if necessary
+            function addLeadingZero(value) {
+                return value < 10 ? `0${value}` : value.toString();
+            }
+        
+            // Add leading zeros to the variables
+            const formattedSeconds = addLeadingZero(seconds);
+            const formattedMinutes = addLeadingZero(minutes);
+            const formattedHours = addLeadingZero(hours);
+            const formattedDays = addLeadingZero(days);
+        
+            // Timer display
+            timerDays.innerText = formattedDays;
+            timerHours.innerText = formattedHours;
+            timerMinutes.innerText = formattedMinutes;
+            timerSeconds.innerText = formattedSeconds;
+        
+            console.log(days, hours, minutes, seconds);
+        
+        }
+        
+        christmasCountdown();
+        
+        setInterval(christmasCountdown, 1000);</script>
+</body>
+</html>
